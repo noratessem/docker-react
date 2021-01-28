@@ -1,0 +1,11 @@
+language: generic 
+sudo: required
+services:
+    - dockerfile
+
+before_install:
+  - docker build -t noratsm/docker-react -f Dockerfile.dev .
+
+script:
+- docker run -e CI=true noratsm/docker-react npm run test
+
